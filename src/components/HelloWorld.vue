@@ -2,34 +2,52 @@
   <div class="hello">
     <div class="input-url">
       <label>enter url</label>
-      <input type="url" v-model="url"/>
+      <input type="url" v-model="url">
       <button @click="make">make short url</button>
     </div>
     <div class="short-url">
-        short url: <span>{{shortLink}}</span>
+      short url:
+      <span>{{shortLink}}</span>
       <button @click="copy">copy</button>
+      <button @click="go">go</button>
     </div>
   </div>
 </template>
 
 <script>
+import { MAKE_URL } from "../config/StoreConfig";
+import * as shortid from "shortid";
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   data: function() {
     return {
       url: "",
       shortLink: ""
-    }
+    };
   },
   methods: {
-    copy: function () {
-      console.log("copy")
+    copy: function() {
+      console.log("copy");
     },
-    make: function () {
-      console.log(this.url)
+    make: function() {
+      console.log(this.url);
+      if (!this.checkURL()) {
+        alert("URL INVALID");
+        return false;
+      }
+      this.shortLink = `https://l.codingall.me/${shortid.generate()}`;
+      this.$store.dispatch(MAKE_URL, { from: this.url, to: this.shortLink});
+    },
+    checkURL: function() {
+      const expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+      const regex = new RegExp(expression);
+      return this.url.match(regex);
+    },
+    go: function() {
+      window.location.replace(this.shortLink);
     }
   }
-}
+};
 </script>
 
 <style scoped>
