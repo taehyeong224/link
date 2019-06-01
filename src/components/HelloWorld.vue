@@ -25,18 +25,23 @@ export default {
       shortLink: ""
     };
   },
+  created: function () {
+    console.log(process.env.NODE_ENV)
+  },
   methods: {
     copy: function() {
       console.log("copy");
     },
     make: function() {
+      const baseHOST = process.env.NODE_ENV === "development" ? "http://localhost:8080" : "https://l.codingall.me"
       console.log(this.url);
       if (!this.checkURL()) {
         alert("URL INVALID");
         return false;
       }
-      this.shortLink = `https://l.codingall.me/${shortid.generate()}`;
-      this.$store.dispatch(MAKE_URL, { from: this.url, to: this.shortLink});
+      const hash = shortid.generate();
+      this.shortLink = `${baseHOST}/${hash}`;
+      this.$store.dispatch(MAKE_URL, { key: hash, from: this.url, to: this.shortLink});
     },
     checkURL: function() {
       const expression = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
