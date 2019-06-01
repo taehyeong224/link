@@ -8,7 +8,8 @@
     </div>
     <div class="short-url">
       short url:
-      <span>{{shortLink}}</span>
+      <input type="text" id="short" v-model="shortLink"/>
+      {{msg}}
       <button @click="copy">copy</button>
       <button @click="go">go</button>
     </div>
@@ -24,7 +25,8 @@ export default {
     return {
       url: "",
       shortLink: "",
-      useHttps: true
+      useHttps: true,
+      msg: ""
     };
   },
   created: function() {
@@ -33,6 +35,12 @@ export default {
   methods: {
     copy: function() {
       console.log("copy");
+      const t = document.getElementById("short")
+      console.log("t : ", t);
+      t.value = this.shortLink;
+      t.select();
+      document.execCommand('copy');
+      this.msg = "complete copy"
     },
     make: function() {
       const baseHOST =
