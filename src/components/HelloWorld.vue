@@ -1,17 +1,192 @@
 <template>
   <div class="hello">
-    <div class="input-url">
-      <label>enter url</label>
-      <input type="url" v-model="url">
-      <button @click="make">make short url</button>
-      <label><input type='checkbox' v-model="useHttps" checked />use https</label>
-    </div>
-    <div class="short-url">
-      short url:
-      <input type="text" id="short" v-model="shortLink"/>
-      {{msg}}
-      <button @click="copy">copy</button>
-      <button @click="go">go</button>
+    <div id="webView" data-canvas="true" data-show-memo="false" data-show-link="false">
+      <div
+        data-obj-id="2k345"
+        data-obj-type="element"
+        data-text-editable="true"
+        class
+        style="position: absolute; top: 79px; left: 345px; width: 300px; height: 54px;"
+      >
+        <div
+          data-text-content="true"
+          style="font-weight: bold; font-size: 36px; text-align: center;"
+          class
+        >Make short URL</div>
+      </div>
+      <div
+        data-obj-id="m8BBe"
+        data-obj-type="element"
+        data-text-editable="true"
+        class
+        style="position: absolute; top: 202px; left: 577px; width: 100px; height: 40px;"
+      >
+        <div
+          data-text-content="true"
+          style="font-size: 16px; color: rgb(255, 255, 255); text-align: center; line-height: 2.5em; border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; background-color: rgb(52, 152, 219);"
+          class
+          @click="make"
+        >Make</div>
+      </div>
+      <div
+        data-obj-type="group"
+        data-obj-id="Ow4yP"
+        class
+        style="position: absolute; left: 697px; top: 212px; width: 289px; height: 20px;"
+      >
+        <div
+          data-obj-id="dfRoX"
+          data-obj-type="element"
+          style="position: absolute; top: 0px; left: 0px; width: 20px; height: 20px;"
+          class
+        >
+          <label data-form-control="checkbox" data-min-width="20" data-min-height="20">
+            <input type="checkbox" checked="checked" v-model="useHttps"/>
+            <span data-form-decorator="true"></span>
+          </label>
+        </div>
+        <div
+          data-obj-id="4GWLx"
+          data-obj-type="element"
+          data-text-editable="true"
+          style="position: absolute; top: 0px; left: 32px; width: 257px; height: 20px;"
+          class
+        >
+          <div data-text-content="true" style="font-size:16px;" class >Use HTTPS</div>
+        </div>
+      </div>
+      <div
+        data-obj-id="ZDOaK"
+        data-obj-type="element"
+        data-text-editable="true"
+        class
+        style="position: absolute; top: 202px; left: 264px; width: 300px; height: 40px;"
+      >
+        <input
+          type="text"
+          data-min-width="60"
+          data-min-height="30"
+          data-text-content="true"
+          value="https://google.com"
+          style="color: rgb(94, 94, 94);"
+          class
+          spellcheck="false"
+          v-model="url"
+        >
+      </div>
+      <div
+        data-obj-id="jb7AX"
+        data-obj-type="element"
+        data-text-editable="true"
+        class
+        style="position: absolute; top: 201px; left: 172px; width: 80px; height: 20px;"
+      >
+        <div
+          data-text-content="true"
+          style="border-radius: 30px; text-align: center; line-height: 20px; color: rgb(255, 255, 255); font-size: 12px; box-shadow: none; background-color: rgb(33, 62, 56);"
+          class
+        >Enter URL</div>
+      </div>
+      <div
+        data-obj-id="f6YFk"
+        data-obj-type="element"
+        data-text-editable="true"
+        class
+        style="position: absolute; top: 256px; left: 264px; width: 300px; height: 40px;"
+      >
+        <input
+          type="text"
+          data-min-width="60"
+          data-min-height="30"
+          data-text-content="true"
+          value
+          style="color: rgb(94, 94, 94);"
+          class
+          id="short" v-model="shortLink"
+        >
+      </div>
+      <div
+        data-obj-id="2ZejR"
+        data-obj-type="element"
+        data-text-editable="true"
+        class
+        style="position: absolute; top: 256px; left: 172px; width: 80px; height: 20px;"
+      >
+        <div
+          data-text-content="true"
+          style="border-top-left-radius: 30px; border-top-right-radius: 30px; border-bottom-right-radius: 30px; border-bottom-left-radius: 30px; text-align: center; line-height: 20px; color: rgb(255, 255, 255); font-size: 12px; box-shadow: none; background-color: rgb(26, 188, 156);"
+          class
+        >Short URL</div>
+      </div>
+      <div
+        data-obj-id="6e11q"
+        data-obj-type="icon"
+        class
+        style="position: absolute; top: 257px; left: 604px; width: 46px; height: 39px;"
+      >
+        <svg
+          @click="copy"
+          xmlns="http://www.w3.org/2000/svg"
+          width="48"
+          height="48"
+          viewBox="0 0 48 48"
+          data-svg-content="true"
+          fill="#000000"
+        >
+          <path
+            d="M32 2H8C5.79 2 4 3.79 4 6v28h4V6h24V2zm6 8H16c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h22c2.21 0 4-1.79 4-4V14c0-2.21-1.79-4-4-4zm0 32H16V14h22v28z"
+          ></path>
+        </svg>
+      </div>
+      <div
+        data-obj-id="3EmTI"
+        data-obj-type="element"
+        data-text-editable="true"
+        class
+        style="position: absolute; top: 311px; left: 587px; width: 80px; height: 20px;"
+      >
+        <div
+          data-text-content="true"
+          style="border-radius: 30px; text-align: center; line-height: 20px; color: rgb(255, 255, 255); font-size: 12px; box-shadow: none; background-color: rgb(231, 76, 60);"
+          class
+        >Copy</div>
+      </div>
+      <div
+        data-obj-id="SlSiV"
+        data-obj-type="icon"
+        class
+        style="position: absolute; top: 242px; left: 705px; width: 64px; height: 64px; transform: rotate(0rad);"
+      >
+        <svg
+        @click="go"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="64"
+          height="64"
+          viewBox="0 0 64 64"
+          fill="#000000"
+          data-svg-content="true"
+        >
+          <g>
+            <path
+              d="M 4,15C 4,15.552, 4.448,16, 5,16l 19.586,0 l-4.292,4.292c-0.39,0.39-0.39,1.024,0,1.414 c 0.39,0.39, 1.024,0.39, 1.414,0l 6-6c 0.092-0.092, 0.166-0.202, 0.216-0.324C 27.972,15.26, 28,15.132, 28,15.004c0-0.002,0-0.002,0-0.004 l0,0c0-0.13-0.026-0.26-0.078-0.382c-0.050-0.122-0.124-0.232-0.216-0.324l-6-6c-0.39-0.39-1.024-0.39-1.414,0 c-0.39,0.39-0.39,1.024,0,1.414L 24.586,14L 5,14 C 4.448,14, 4,14.448, 4,15z"
+            ></path>
+          </g>
+        </svg>
+      </div>
+      <div
+        data-obj-id="RNMmR"
+        data-obj-type="element"
+        data-text-editable="true"
+        class
+        style="position: absolute; top: 311px; left: 697px; width: 80px; height: 20px;"
+      >
+        <div
+          data-text-content="true"
+          style="border-radius: 30px; text-align: center; line-height: 20px; color: rgb(255, 255, 255); font-size: 12px; box-shadow: none; background-color: rgb(0, 0, 0);"
+          class
+        >Go</div>
+      </div>
     </div>
   </div>
 </template>
@@ -35,12 +210,12 @@ export default {
   methods: {
     copy: function() {
       console.log("copy");
-      const t = document.getElementById("short")
+      const t = document.getElementById("short");
       console.log("t : ", t);
       t.value = this.shortLink;
       t.select();
-      document.execCommand('copy');
-      this.msg = "complete copy"
+      document.execCommand("copy");
+      this.msg = "complete copy";
     },
     make: function() {
       const baseHOST =
