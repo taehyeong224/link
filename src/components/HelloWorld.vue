@@ -41,7 +41,7 @@
           class
         >
           <label data-form-control="checkbox" data-min-width="20" data-min-height="20">
-            <input type="checkbox" checked="checked" v-model="useHttps"/>
+            <input type="checkbox" checked="checked" v-model="useHttps">
             <span data-form-decorator="true"></span>
           </label>
         </div>
@@ -52,7 +52,7 @@
           style="position: absolute; top: 0px; left: 32px; width: 257px; height: 20px;"
           class
         >
-          <div data-text-content="true" style="font-size:16px;" class >Use HTTPS</div>
+          <div data-text-content="true" style="font-size:16px;" class>Use HTTPS</div>
         </div>
       </div>
       <div
@@ -69,7 +69,7 @@
           data-text-content="true"
           value="https://google.com"
           style="color: rgb(94, 94, 94);"
-          class
+          class="enter-url"
           spellcheck="false"
           v-model="url"
         >
@@ -79,7 +79,7 @@
         data-obj-type="element"
         data-text-editable="true"
         class
-        style="position: absolute; top: 201px; left: 172px; width: 80px; height: 20px;"
+        style="position: absolute; top: 212px; left: 172px; width: 80px; height: 20px;"
       >
         <div
           data-text-content="true"
@@ -101,8 +101,9 @@
           data-text-content="true"
           value
           style="color: rgb(94, 94, 94);"
-          class
-          id="short" v-model="shortLink"
+          class="short-url"
+          id="short"
+          v-model="shortLink"
         >
       </div>
       <div
@@ -110,7 +111,7 @@
         data-obj-type="element"
         data-text-editable="true"
         class
-        style="position: absolute; top: 256px; left: 172px; width: 80px; height: 20px;"
+        style="position: absolute; top: 266px; left: 172px; width: 80px; height: 20px;"
       >
         <div
           data-text-content="true"
@@ -151,28 +152,8 @@
           class
         >Copy</div>
       </div>
-      <div
-        data-obj-id="SlSiV"
-        data-obj-type="icon"
-        class
-        style="position: absolute; top: 242px; left: 705px; width: 64px; height: 64px; transform: rotate(0rad);"
-      >
-        <svg
-        @click="go"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          width="64"
-          height="64"
-          viewBox="0 0 64 64"
-          fill="#000000"
-          data-svg-content="true"
-        >
-          <g>
-            <path
-              d="M 4,15C 4,15.552, 4.448,16, 5,16l 19.586,0 l-4.292,4.292c-0.39,0.39-0.39,1.024,0,1.414 c 0.39,0.39, 1.024,0.39, 1.414,0l 6-6c 0.092-0.092, 0.166-0.202, 0.216-0.324C 27.972,15.26, 28,15.132, 28,15.004c0-0.002,0-0.002,0-0.004 l0,0c0-0.13-0.026-0.26-0.078-0.382c-0.050-0.122-0.124-0.232-0.216-0.324l-6-6c-0.39-0.39-1.024-0.39-1.414,0 c-0.39,0.39-0.39,1.024,0,1.414L 24.586,14L 5,14 C 4.448,14, 4,14.448, 4,15z"
-            ></path>
-          </g>
-        </svg>
+      <div class style="position: absolute; top: 242px; left: 705px; width: 64px; height: 64px;">
+        <i class="fa fa-arrow-circle-right fa-3x" aria-hidden="true" @click="go" style="margin: 20px auto auto 10px;"></i>
       </div>
       <div
         data-obj-id="RNMmR"
@@ -269,10 +250,12 @@ export default {
 </script>
 
 <style scoped>
-.input-url {
-  border: 1px solid red;
+.enter-url {
+  width: 300px;
+  height: 40px;
 }
 .short-url {
-  border: 1px solid blue;
+  width: 300px;
+  height: 40px;
 }
 </style>
