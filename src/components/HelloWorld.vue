@@ -243,7 +243,8 @@ export default {
       return this.url.match(regex);
     },
     go: function() {
-      window.location.replace(this.shortLink);
+      // window.location.replace(this.shortLink);
+      window.open(this.shortLink, '_blank'); 
     }
   }
 };
